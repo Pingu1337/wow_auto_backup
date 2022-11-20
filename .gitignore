@@ -6,3 +6,4 @@ dist/
 build/
 *.zip
 *.spec
+backups_count.txt

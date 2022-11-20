@@ -4,8 +4,7 @@ import os
 def createLogger():
 
     if not os.path.isdir('logs'):
-        os.mkdir('logs')
-        os.mkdir('logs/debug')
+        os.makedirs('logs/debug')
 
     debuglogs = 'logs/debug/debug.log'
     logs = 'logs/logs.log'
