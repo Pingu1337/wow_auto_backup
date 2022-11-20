@@ -2,3 +2,5 @@ logs/
 backup_paths.json
 __pycache__
 mock_backup/from
+
+*.zip
