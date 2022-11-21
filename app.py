@@ -102,7 +102,7 @@ class App(tk.Tk):
         logging.info('paths saved to "backup_paths.json"')
         print('paths saved to "backup_paths.json"')
         schedule.Schedule_Task()
-        self.call(exit())
+        self.call(app.destroy())
         
 
     def loadDirs(self):
@@ -118,10 +118,5 @@ class App(tk.Tk):
 
 
 if __name__ == "__main__":
-    app = App()
-    app.mainloop()
-
-
-def Run():
     app = App()
     app.mainloop()

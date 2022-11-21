@@ -12,7 +12,7 @@ def createLogger():
     logger = logging.getLogger()
     logger.setLevel(logging.DEBUG)
     # create file handler which logs even debug messages
-    fh = logging.FileHandler(debuglogs)
+    fh = logging.FileHandler(debuglogs, 'w')
     fh.setLevel(logging.DEBUG)
 
     # create console handler with a higher log level

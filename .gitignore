@@ -7,3 +7,4 @@ build/
 *.zip
 *.spec
 backups_count.txt
+last_backup.txt

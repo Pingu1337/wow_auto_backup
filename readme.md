@@ -1,4 +1,4 @@
 ## PyInstaller
 
 - `pyinstaller --onefile -w backup.py`
-- `pyinstaller --onefile -w installer.py`
+- `pyinstaller --onefile -w app.py`

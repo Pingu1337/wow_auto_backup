@@ -8,8 +8,8 @@ log = logger.createLogger()
 def Schedule_Task():
     scheduler = win32com.client.Dispatch('Schedule.Service')
     scheduler.Connect()
-    # root_folder = scheduler.GetFolder('\\')
-    root_folder = os.getcwd() # <- if this dont work, this where i pick up
+    work_dir = os.getcwd()
+    root_folder = scheduler.GetFolder('\\') 
     task_def = scheduler.NewTask(0)
 
     # Create trigger
@@ -21,13 +21,14 @@ def Schedule_Task():
     # Create action
     TASK_ACTION_EXEC = 0
     action = task_def.Actions.Create(TASK_ACTION_EXEC)
-    action.ID = 'DO NOTHING'
-    action.Path = os.getcwd() + "/backup.exe"
+    action.ID = 'BACKUP WOW INTERFACE'
+    action.WorkingDirectory = work_dir
+    action.Path = os.getcwd() + "\\backup.exe"
 
     # action.Arguments = f'/k echo test'
 
     # Set parameters
-    task_def.RegistrationInfo.Description = 'Test Task'
+    task_def.RegistrationInfo.Description = 'Interface Backup for World of Warcraft'
     task_def.Settings.Enabled = True
     task_def.Settings.StopIfGoingOnBatteries = False
 
@@ -36,10 +37,14 @@ def Schedule_Task():
     TASK_CREATE_OR_UPDATE = 6
     TASK_LOGON_NONE = 0
     root_folder.RegisterTaskDefinition(
-        'Test Task',  # Task name
+        'wow backup',  # Task name
         task_def,
         TASK_CREATE_OR_UPDATE,
         '',  # No user
         '',  # No password
         TASK_LOGON_NONE)
     log.info('task scheduled')
+
+
+# use this when debugging
+# Schedule_Task()
