@@ -12,9 +12,9 @@ class App(tk.Tk):
     def __init__(self):
         super().__init__()
         
-        self.geometry('400x150')
+        self.geometry('450x150')
         self.resizable(0, 0)
-        self.title('Login')
+        self.title('wow backup')
 
         # UI options
         paddings = {'padx': 5, 'pady': 5}
@@ -30,28 +30,28 @@ class App(tk.Tk):
         self.loadDirs()
 
         # AddOns
-        addons_label = ttk.Label(self, text="AddOns Directory:")
+        addons_label = ttk.Label(self, text="AddOns Directory:", width=25)
         addons_label.grid(column=0, row=0, sticky=tk.W, **paddings)
 
-        self.addons_entry = ttk.Entry(self, textvariable=self.addonsDir , width=40, **entry_font)
+        self.addons_entry = ttk.Entry(self, textvariable=self.addonsDir , width=50, **entry_font)
         self.addons_entry.grid(column=1, row=0, sticky=tk.E, **paddings)
         addons_button = ttk.Button(self, text="Browse", command=self.setAddonDir)
         addons_button.grid(column=2, row=0, sticky=tk.E, **paddings)
 
         # WTF
-        wtf_label = ttk.Label(self, text="WTF Directory:")
+        wtf_label = ttk.Label(self, text="WTF Directory:", width=25)
         wtf_label.grid(column=0, row=1, sticky=tk.W, **paddings)
 
-        self.wtf_entry = ttk.Entry(self, textvariable=self.wtfDir, width=40, **entry_font)
+        self.wtf_entry = ttk.Entry(self, textvariable=self.wtfDir, width=50, **entry_font)
         self.wtf_entry.grid(column=1, row=1, sticky=tk.E, **paddings)
         wtf_button = ttk.Button(self, text="Browse", command=self.setWtfDir)
         wtf_button.grid(column=2, row=1, sticky=tk.E, **paddings)
         
         # Backup Dest
-        wtf_label = ttk.Label(self, text="Backup Destination:")
+        wtf_label = ttk.Label(self, text="Backup Destination:", width=25)
         wtf_label.grid(column=0, row=2, sticky=tk.W, **paddings)
 
-        self.wtf_entry = ttk.Entry(self, textvariable=self.backupDir, width=40, **entry_font)
+        self.wtf_entry = ttk.Entry(self, textvariable=self.backupDir, width=50, **entry_font)
         self.wtf_entry.grid(column=1, row=2, sticky=tk.E, **paddings)
         wtf_button = ttk.Button(self, text="Browse", command=self.setBackupDir)
         wtf_button.grid(column=2, row=2, sticky=tk.E, **paddings)

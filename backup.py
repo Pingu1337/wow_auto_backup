@@ -2,7 +2,8 @@ import os
 import json
 import shutil
 import logger
-from datetime import datetime
+import datetime
+import time
 
 logging = logger.createLogger()
 
@@ -56,24 +57,30 @@ def DoBackup():
     logging.info('successfully backed up interface')
     
 
-
-
 # Check if backup has been done today, if not do backup
-day = datetime.now().day
+# this is not needed if use TASK_TRIGGER_DAILY 
+# today = datetime.date.today()
 
-if not os.path.exists('last_backup.txt'):
-    f = open('last_backup.txt', 'w')
-    f.write(str(day))
-    f.close()
-    logging.info('performing backup...')
-    DoBackup()
-else:
-    f = open('last_backup.txt', 'r+')
-    last_updated = int(f.read())
-    logging.info(f'Backup has been done today: {last_updated >= day}')
-    if not last_updated >= day:
-        logging.info('performing backup...')
-        f.seek(0)
-        f.write(str(day))
-        DoBackup()
-    f.close()
+# time_stamp = datetime.datetime.timestamp(datetime.datetime.now())
+
+# if not os.path.exists('last_backup.txt'):
+#     f = open('last_backup.txt', 'w')
+#     f.write(str(time_stamp))
+#     f.close()
+#     logging.info('performing backup...')
+#     DoBackup()
+# else:
+#     f = open('last_backup.txt', 'r+')
+#     last_updated_timestamp = float(f.read())
+#     last_updated = datetime.date.fromtimestamp(last_updated_timestamp)
+#     has_done_backup = today <= last_updated 
+#     logging.info(f'Backup has been done today: {has_done_backup}')
+#     if not has_done_backup:
+#         logging.info('performing backup...')
+#         f.seek(0)
+#         f.write(str(time_stamp))
+#         DoBackup()
+#     f.close()
+
+# Call DoBackup in top level if using TASK_TRIGGER_DAILY 
+DoBackup()
