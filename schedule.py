@@ -14,7 +14,7 @@ def Schedule_Task():
 
     # Create daily trigger 
     start_time = datetime.datetime.now() + datetime.timedelta(seconds=5) 
-    start_time = start_time.replace(hour=00, minute=00, second=1, microsecond=0)
+    start_time = start_time.replace(hour=4, minute=5, second=0, microsecond=0)
     TASK_TRIGGER_TYPE  = 2
     trigger = task_def.Triggers.Create(TASK_TRIGGER_TYPE)
     trigger.StartBoundary = start_time.isoformat()
@@ -24,6 +24,12 @@ def Schedule_Task():
     TASK_TRIGGER_ONCE  = 1
     trigger = task_def.Triggers.Create(TASK_TRIGGER_ONCE)
     trigger.StartBoundary = exec_time.isoformat()
+
+    # Create on logon trigger
+    TASK_TRIGGER_LOGON  = 9
+    trigger = task_def.Triggers.Create(TASK_TRIGGER_LOGON)
+    trigger.Id = "LogonTriggerId"
+    trigger.UserId = os.environ.get('USERNAME') # current user account
 
     # Create action
     TASK_ACTION_EXEC = 0
@@ -39,20 +45,31 @@ def Schedule_Task():
     task_def.Settings.StopIfGoingOnBatteries = False
     task_def.Settings.StartWhenAvailable = True # <- credit: https://github.com/mathisson
 
+    # Set RunLevel
+    TASK_RUNLEVEL_HIGHEST = 1
+    TASK_LOGON_SERVICE_ACCOUNT = 5
+    task_def.Principal.UserID = "SYSTEM"
+    task_def.Principal.DisplayName = "SYSTEM"
+    task_def.Principal.LogonType = TASK_LOGON_SERVICE_ACCOUNT
+    task_def.Principal.RunLevel = TASK_RUNLEVEL_HIGHEST # This only works when executed with admin priviliges. 
+
+
     # Register task
     # If task already exists, it will be updated
     TASK_CREATE_OR_UPDATE = 6
-    TASK_LOGON_INTERACTIVE_TOKEN = 3
     root_folder.RegisterTaskDefinition(
         'wow backup',  # Task name
         task_def,
         TASK_CREATE_OR_UPDATE,
-        '',  # No user
-        '',  # No password
-        TASK_LOGON_INTERACTIVE_TOKEN)
+        task_def.Principal.UserID,
+        None, 
+        TASK_LOGON_SERVICE_ACCOUNT
+    )
     log.info('task scheduled')
 
 
-# use this when debugging
+# Uncomment this when debugging
 # Schedule_Task()
 
+# Note: When debugging this file, start CMD as administrator and run 'python schedule.py'
+# this is because the Task Scheduler needs to run backup.exe as administrator
