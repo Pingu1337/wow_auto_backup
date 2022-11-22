@@ -1,6 +1,6 @@
 # wowAutoBackup
 
-_wowAutoBackup is a tool for automatically backup AddOns/WTF directories to avoid losing things like WeakAuras in case of file corruption._
+_wowAutoBackup is a tool used to automatically backup AddOns/WTF directories to avoid losing things like WeakAuras in case of file corruption._
 
 <center>
 <img src="assets/icon.svg" alt="drawing" width="300"/>
