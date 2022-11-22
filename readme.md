@@ -13,6 +13,10 @@ A task is scheduled in windows Task Scheduler to run when user logs in.
 
 <br>
 
+## 🚧 The application is currently being developed and is undergoing a testing phase **use it at your own risk**
+
+<br>
+
 <br>
 
 ---
