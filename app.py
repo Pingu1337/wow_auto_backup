@@ -15,8 +15,8 @@ class App(tk.Tk):
         self.geometry('450x150')
         self.resizable(0, 0)
         self.title('wow backup')
-        # if os.path.exists("app.exe"):
-        self.iconbitmap("icon.ico")
+        if os.path.exists("wowAutoBackup.exe"):
+            self.iconbitmap("wowAutoBackup.exe")
 
         # UI options
         paddings = {'padx': 5, 'pady': 5}

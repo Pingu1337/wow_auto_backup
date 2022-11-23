@@ -12,12 +12,17 @@ def Schedule_Task():
     root_folder = scheduler.GetFolder('\\') 
     task_def = scheduler.NewTask(0)
 
+    """
+    Daily Trigger is currently not being used. 
+    Keeping this in the code in case it will be needed for upcoming features.
+    """
+
     # Create daily trigger 
-    start_time = datetime.datetime.now() + datetime.timedelta(seconds=5) 
-    start_time = start_time.replace(hour=4, minute=5, second=0, microsecond=0)
-    TASK_TRIGGER_TYPE  = 2
-    trigger = task_def.Triggers.Create(TASK_TRIGGER_TYPE)
-    trigger.StartBoundary = start_time.isoformat()
+    # start_time = datetime.datetime.now() + datetime.timedelta(seconds=5) 
+    # start_time = start_time.replace(hour=4, minute=5, second=0, microsecond=0) 
+    # TASK_TRIGGER_TYPE  = 2
+    # trigger = task_def.Triggers.Create(TASK_TRIGGER_TYPE)
+    # trigger.StartBoundary = start_time.isoformat()
 
     # Create one time trigger
     exec_time = datetime.datetime.now() + datetime.timedelta(seconds=5) 
@@ -68,8 +73,11 @@ def Schedule_Task():
     log.info('task scheduled')
 
 
+"""
+Note: When debugging this file, start CMD as administrator and run "python schedule.py"
+this is because the Task Scheduler needs to run backup.exe as administrator
+"""
+
 # Uncomment this when debugging
 # Schedule_Task()
 
-# Note: When debugging this file, start CMD as administrator and run 'python schedule.py'
-# this is because the Task Scheduler needs to run backup.exe as administrator
