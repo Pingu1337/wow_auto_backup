@@ -74,3 +74,5 @@ When using pyinstaller use following commands:
 
 To debug `schedule.py` only backup.exe is needed, it is placed in the root directory.
 To debug the entire app as an executable run above commands or setup auto-py-to-exe in a similar way _(make sure to move icon.ico to the output directory)_. Then place **backup.exe** and **uninstaller.exe** in the same directory as the app executable.
+
+When debugging `backup.py` you can use the folders inside `mock_backup/small_from` to reduce the time it takes to do backups.
