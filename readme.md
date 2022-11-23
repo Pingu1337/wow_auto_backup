@@ -63,9 +63,12 @@ Feel free to contribute, fork the project and make a pull request!
 
 When using pyinstaller use following commands:
 
-- `pyinstaller --onefile -w backup.py`
-- `pyinstaller --onedir -w app.py`
-- `pyinstaller --onefile -w uninstaller.py`
+- **wowAutoBackup.exe** - `pyinstaller --noconfirm --onedir --windowed --icon "icon.ico" --name "wowAutoBackup" --ascii --clean --uac-admin "app.py"`
+  > _this is the main executable._
+- **backup.exe** - `pyinstaller --onefile --windowed --icon "icon.ico" --name "backup" --ascii --clean --uac-admin "backup.py"`
+  > _this is the task that will be scheduled to run on logon, this is the program that does the backups_
+- **removeTask.exe** - `pyinstaller --onefile --windowed --icon "icon.ico" --name "removeTask" --ascii --clean --uac-admin "uninstaller.py"`
+  > _this is executed on uninstall to remove the scheduled task from task scheduler_
 
 To debug `schedule.py` only backup.exe is needed, it is placed in the root directory.
 To debug the entire app as an executable run above commands or setup auto-py-to-exe in a similar way _(make sure to move icon.ico to the output directory)_. Then place **backup.exe** and **uninstaller.exe** in the same directory as the app executable.
