@@ -12,6 +12,7 @@ _World of Warcraft UI Backup Tool_
 When you start the application the first time you will be prompted to set the path to your WTF and AddOns folder aswell as a destination folder where the backups will be saved.
 Once the paths are set up everything will be handled automatically.
 A backup is done every time you login to windows.
+![app interface](assets/app%20interface.png)
 
 ### **Backups**
 
