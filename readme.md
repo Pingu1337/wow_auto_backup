@@ -7,11 +7,20 @@ _World of Warcraft UI Backup Tool_
 
 ## How it works
 
-When you start the application the first time you will be prompted to set the path to you WTF and AddOns folder aswell as a destination folder where the backups will be saved.
-Once the paths are set up everything will be handled automatically. Backups are done once when you login to windows.
+### **Setup**
 
-A total of 10 backups are stored, when 10 backups have been done the first backup is replaced. The latest backup is tagged with _`(latest)`_.
+When you start the application the first time you will be prompted to set the path to your WTF and AddOns folder aswell as a destination folder where the backups will be saved.
+Once the paths are set up everything will be handled automatically.
+A backup is done every time you login to windows.
+
+### **Backups**
+
+A total of 10 backups are stored in the destination of your choice, when 10 backups have been done the first backup is replaced. The latest backup is tagged with _`(latest)`_.
 To reduce size backups are compressed to zip archives. When tested on my own game files i was able to reduce my `800MB` UI to `211MB`.
+
+### **Restore to a backup**
+
+To restore to a backup all you need to do is unzip the `backup_<number>.zip` file and replace the WTF and Addons folder located at `World of Warcraft\_retail_\WTF` and `World of Warcraft\_retail_\Interface\AddOns` with the ones contained in `backup_<number>.zip`
 
 <br>
 
