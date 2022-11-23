@@ -33,7 +33,7 @@ To restore to a backup all you need to do is unzip the `backup_<number>.zip` fil
 <details>
   <summary><b>I understand the risks</b></summary>
   
-  **[⚠️Download Anyway⚠️](https://github.com/Pingu1337/wow_auto_backup/raw/master/release/wowAutoBackup1.0-setup.exe)**
+  **[⚠️Download Anyway⚠️](https://github.com/Pingu1337/wow_auto_backup/raw/master/release(alpha)/wowAutoBackup1.0.1-setup.exe)**
   
 </details>
 
