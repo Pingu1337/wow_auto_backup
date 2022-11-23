@@ -2,31 +2,47 @@
 
 _wowAutoBackup is a tool used to automatically backup AddOns/WTF directories to avoid losing things like WeakAuras in case of file corruption._
 
-<center>
+_World of Warcraft UI Backup Tool_
 <img src="assets/icon.svg" alt="drawing" width="300"/>
-</center>
 
 ## How it works
 
-You set up the path to AddOns and WTF folders aswell as an backup directory.
-A task is scheduled in windows Task Scheduler to run when user logs in.
+When you start the application the first time you will be prompted to set the path to you WTF and AddOns folder aswell as a destination folder where the backups will be saved.
+Once the paths are set up everything will be handled automatically. Backups are done once when you login to windows.
+
+A total of 10 backups are stored, when 10 backups have been done the first backup is replaced. The latest backup is tagged with _`(latest)`_.
+To reduce size backups are compressed to zip archives. When tested on my own game files i was able to reduce my `800MB` UI to `211MB`.
 
 <br>
 
-### 🚧 The application is currently being developed and is undergoing a testing phase **use it at your own risk**
+# Download
 
-[Download Anyway](https://github.com/Pingu1337/wow_auto_backup/raw/master/release/wowAutoBackup1.0-setup.exe)
+### 🚧 The application is currently being developed and is undergoing a testing phase.
+
+### **Use it at your own risk!**
+
+<details>
+  <summary><b>I understand the risks</b></summary>
+  
+  **[⚠️Download Anyway⚠️](https://github.com/Pingu1337/wow_auto_backup/raw/master/release/wowAutoBackup1.0-setup.exe)**
+  
+</details>
+
 <br>
 
 <br>
 
----
+## License
 
-## Contribute
+**[MIT](https://github.com/pingu1337/wow_auto_backup/blob/master/license)**
+
+<br>
+
+# Contribute 🔧
 
 Feel free to contribute, fork the project and make a pull request!
 
-Here follows some information that might be useful when developing on this project.
+**⬇️Below is some information that may be useful as you work on this project.⬇️**
 
 ### Install pip packages
 
@@ -42,5 +58,5 @@ When using pyinstaller use following commands:
 - `pyinstaller --onedir -w app.py`
 - `pyinstaller --onefile -w uninstaller.py`
 
-To debug schedule.py only backup.exe is needed, it is placed in the root directory.
+To debug `schedule.py` only backup.exe is needed, it is placed in the root directory.
 To debug the entire app as an executable run above commands or setup auto-py-to-exe in a similar way _(make sure to move icon.ico to the output directory)_. Then place **backup.exe** and **uninstaller.exe** in the same directory as the app executable.
