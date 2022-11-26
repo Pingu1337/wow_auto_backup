@@ -53,8 +53,9 @@ def Schedule_Task():
     # Set RunLevel
     TASK_RUNLEVEL_HIGHEST = 1
     TASK_LOGON_SERVICE_ACCOUNT = 5
-    task_def.Principal.UserID = "SYSTEM"
-    task_def.Principal.DisplayName = "SYSTEM"
+    # task_def.Principal.UserID = os.environ.get('USERNAME') 
+    task_def.Principal.DisplayName = os.environ.get('USERNAME')
+    task_def.Principal.GroupID = "Administrators"
     task_def.Principal.LogonType = TASK_LOGON_SERVICE_ACCOUNT
     task_def.Principal.RunLevel = TASK_RUNLEVEL_HIGHEST # This only works when executed with admin priviliges. 
 
@@ -79,5 +80,5 @@ this is because the Task Scheduler needs to run backup.exe as administrator
 """
 
 # Uncomment this when debugging
-# Schedule_Task()
+Schedule_Task()
 
