@@ -80,5 +80,5 @@ this is because the Task Scheduler needs to run backup.exe as administrator
 """
 
 # Uncomment this when debugging
-Schedule_Task()
+# Schedule_Task()
 
