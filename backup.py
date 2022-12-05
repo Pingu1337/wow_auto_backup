@@ -43,6 +43,13 @@ def DoBackup():
 
     
     file.close()
+
+    if os.path.isfile(f'{dest}/backup_{num}.zip'):
+        os.unlink(f'{dest}/backup_{num}.zip')
+        logging.info(f'successfully removed existing {dest}/backup_{num}.zip')
+    else: 
+        logging.info(f'{dest}/backup_{num}.zip does not exist, no need to remove file')
+
     shutil.make_archive(f'{dest}/backup_{num}', 'zip', source, logger=logging)
     shutil.rmtree(source, onerror=rmErr)
     backups_list = os.listdir(dest)
@@ -50,10 +57,10 @@ def DoBackup():
     # remove latest tag from previous backup
     for b in backups_list:
         if 'latest' in b:
-            os.rename(f'{dest}/{b}', f'{dest}/{b.replace("(latest)", "")}')
+            shutil.move(f'{dest}/{b}', f'{dest}/{b.replace("(latest)", "")}'.rstrip())
 
     # tag latest backup
-    os.rename(f'{dest}/backup_{num}.zip',f'{dest}/backup_{num} (latest).zip')
+    shutil.move(f'{dest}/backup_{num}.zip',f'{dest}/backup_{num}(latest).zip')
     logging.info('successfully backed up interface')
     
 
